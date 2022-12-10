@@ -11,8 +11,6 @@ const execFileAsync = promisify(execFile);
 
 // Location of the Ookla speedtest CLI
 const EXECUTABLE_LOC = checkEnvVarFile("EXECUTABLE_LOC");
-// Location the Firebase configuration
-const FIREBASE_CONFIG_LOC = checkEnvVarFile("FIREBASE_CONFIG_LOC");
 // OAuth client ID and client secret
 const CLIENT_ID = checkEnvVar("CLIENT_ID");
 const CLIENT_SECRET = checkEnvVar("CLIENT_SECRET");
