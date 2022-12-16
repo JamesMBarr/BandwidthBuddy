@@ -8,6 +8,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "google-auth-library": "^8.7.0",
     "node-fetch": "2"
   }
 }
