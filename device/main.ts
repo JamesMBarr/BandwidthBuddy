@@ -3,6 +3,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "util";
 import { checkEnvVar, checkEnvVarFile } from "../shared/env";
+import { fetchWrapper } from "../shared/utils";
 import { AuthClient } from "./AuthClient";
 
 const execFileAsync = promisify(execFile);
@@ -37,14 +38,18 @@ const main = async () => {
 
   console.log("Posting data to endpoint");
 
-  const res = await client.request({
-    url: URL,
+  // refreshes the credentials is required
+  await client.getAccessToken();
+
+  const resp = await fetchWrapper(URL, {
     method: "POST",
-    data: { hello: "world" },
+    headers: {
+      Authorization: `Bearer ${client.credentials.id_token}`,
+      "Content-Type": "application/json",
+    },
   });
 
-  if (res.status < 200 || res.status >= 300)
-    throw Error(`Unsuccessful request: ${res.data}`);
+  console.log(resp.status, resp.statusText);
 
   console.log("Done");
 };

@@ -22,6 +22,7 @@ interface AccessToken {
 
 interface RefreshToken extends AccessToken {
   refresh_token: string;
+  expiry_date: number;
 }
 
 class AuthClient extends OAuth2Client {
@@ -62,7 +63,14 @@ class AuthClient extends OAuth2Client {
 
       console.log("Go to the URL provided and enter the code: ", content);
 
-      const token = await this.pollAuthServer();
+      let token = await this.pollAuthServer();
+
+      // calculate and append the expiry date
+      token = {
+        ...token,
+        expiry_date: new Date().getTime() + token.expires_in,
+      };
+
       this.token = token;
 
       super.setCredentials(token);
