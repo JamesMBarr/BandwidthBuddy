@@ -37,7 +37,10 @@ const fetchWrapper = async (
     try {
       const resp = await fetch(args[0], args[1]);
 
-      if (!resp.ok) rej(resp.text());
+      if (!resp.ok) {
+        rej(await resp.text());
+        return;
+      }
 
       res(resp);
     } catch (error) {
