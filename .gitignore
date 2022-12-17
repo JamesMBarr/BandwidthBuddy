@@ -1,7 +1,9 @@
 # Custom
+
 firebaseConfig.json
-token.json
+token*.json
 lib
+.vscode/
 
 ## Build directories
 /lib
