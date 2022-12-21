@@ -26,13 +26,16 @@ interface RefreshToken extends AccessToken {
 }
 
 class AuthClient extends OAuth2Client {
-  static TOKEN_LOC = "./token.json";
+  private static TOKEN_LOC = "./token.json";
   // TODO: after fetching the auth code
   deviceCode: string | null = null;
   private _token: RefreshToken | null = null;
 
   constructor(clientId: string, clientSecret: string) {
     super(clientId, clientSecret);
+    super.addListener("tokens", (token) => {
+      this.token = { ...this._token, ...token };
+    });
   }
 
   static get doesTokenFileExist() {
@@ -54,8 +57,6 @@ class AuthClient extends OAuth2Client {
    * After making the request for a device code, polls the token endpoint with
    * an exponentially increasing back off. Writes the token response to a file
    * synchronously
-   *
-   * TODO: build in the refresh token logic and retry?
    */
   async createOAuthToken() {
     try {

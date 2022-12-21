@@ -23,18 +23,18 @@ const main = async () => {
   await client.initialise();
 
   // Executes internet speed test CLI
-  // const { stdout, stderr } = await execFileAsync(EXECUTABLE_LOC, [
-  //   "--format",
-  //   "json",
-  // ]);
+  const { stdout, stderr } = await execFileAsync(EXECUTABLE_LOC, [
+    "--format",
+    "json",
+  ]);
 
-  // if (stderr) {
-  //   console.error(stderr);
-  //   process.exit(1);
-  // }
+  if (stderr) {
+    console.error(stderr);
+    process.exit(1);
+  }
 
-  // console.log("Completed speedtest process");
-  // const result = JSON.parse(stdout);
+  console.log("Completed speedtest process");
+  const result = JSON.parse(stdout);
 
   console.log("Posting data to endpoint");
 
@@ -43,6 +43,7 @@ const main = async () => {
 
   const resp = await fetchWrapper(URL, {
     method: "POST",
+    body: JSON.stringify(result),
     headers: {
       Authorization: `Bearer ${client.credentials.id_token}`,
       "Content-Type": "application/json",
