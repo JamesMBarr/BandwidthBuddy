@@ -1,3 +1,5 @@
+import { Timestamp } from "@google-cloud/firestore";
+
 interface MetadataUser {
   id: string;
   email: string;
@@ -31,9 +33,9 @@ interface ProcessedMeasurement {
   upload: number;
   latency: number;
   rawFileId: string;
-  measurementDt: string;
-  storageDt: string;
-  createdDt: string;
+  measurementDt: Timestamp;
+  storageDt: Timestamp;
+  createdDt: Timestamp;
 }
 
 const isRawMeasurement = (obj: any): obj is RawMeasurement => {

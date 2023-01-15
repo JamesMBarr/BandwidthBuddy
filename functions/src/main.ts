@@ -1,6 +1,7 @@
 import { firestore } from "firebase-admin";
 import { initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
+import { Timestamp } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 import { logger } from "firebase-functions/v1";
 import { UserRecord } from "firebase-functions/v1/auth";
@@ -111,16 +112,17 @@ exports.ingestmeasurement = onObjectFinalized(
       throw Error("Unsupported measurement schema");
     }
 
-    // TODO: convert dt string to dt objs
     const readingDoc: ProcessedMeasurement = {
       user: enrichedMeasurement.__metadata.user,
       download: enrichedMeasurement.download.bandwidth * 8,
       upload: enrichedMeasurement.upload.bandwidth * 8,
       latency: enrichedMeasurement.ping.latency,
       rawFileId: e.data.id,
-      measurementDt: enrichedMeasurement.timestamp,
-      storageDt: e.time,
-      createdDt: new Date().toISOString(),
+      measurementDt: Timestamp.fromDate(
+        new Date(enrichedMeasurement.timestamp)
+      ),
+      storageDt: Timestamp.fromDate(new Date(e.time)),
+      createdDt: Timestamp.now(),
     };
 
     const measurements = firestore().collection("measurements");
