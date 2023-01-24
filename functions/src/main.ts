@@ -13,8 +13,8 @@ import firebaseConfig from "../../firebaseConfig.json";
 import { checkEnvVar } from "../../shared/env";
 import {
   isEnrichedMeasurement,
-  type EnrichedMeasurement,
-  type ProcessedMeasurement,
+  EnrichedMeasurement,
+  ProcessedMeasurement,
 } from "../../shared/types";
 
 initializeApp(firebaseConfig);
