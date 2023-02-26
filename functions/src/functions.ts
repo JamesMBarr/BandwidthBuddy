@@ -7,7 +7,11 @@ import { LoginTicket, OAuth2Client } from "google-auth-library";
 
 import { auth, bucket, store, uploadToBucket } from "@/main";
 import { checkEnvVar } from "@shared/env";
-import { isEnrichedMeasurement, ProcessedMeasurement } from "@shared/types";
+import {
+  isEnrichedMeasurement,
+  isRawMeasurement,
+  ProcessedMeasurement,
+} from "@shared/types";
 
 exports.storemeasurement = onRequest(
   {
@@ -63,8 +67,11 @@ exports.storemeasurement = onRequest(
       return;
     }
 
-    // TODO: add is raw measurement check
     const rawMeasurement = JSON.parse(req.rawBody.toString());
+    if (!isRawMeasurement(rawMeasurement)) {
+      throw Error("Unsupported raw measurement schema");
+    }
+
     await uploadToBucket(user, rawMeasurement);
 
     res.status(202).send("Accepted");
