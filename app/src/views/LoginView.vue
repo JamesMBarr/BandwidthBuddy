@@ -59,36 +59,58 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="login-view">
-    <form @submit.prevent="login">
-      <label for="email"
-        >Email
-        <input v-model="username" type="email" />
-      </label>
-      <label for="password"
-        >Password
-        <input v-model="password" type="password" />
-      </label>
-      <div
-        :class="{ invisible: !invalidFlag && !errorFlag }"
-        class="error-message"
-      >
-        <small>
-          {{
-            invalidFlag
-              ? "Incorrect email and password."
-              : "Unexpected error. Please try again."
-          }}</small
+  <article class="login-view grid">
+    <div>
+      <hgroup>
+        <h1>Sign in</h1>
+        <h2>A simplest internet speed dashboard</h2>
+      </hgroup>
+      <form @submit.prevent="login">
+        <label for="email"
+          >Email
+          <input v-model="username" type="email" />
+        </label>
+        <label for="password"
+          >Password
+          <input v-model="password" type="password" />
+        </label>
+        <div
+          :class="{ invisible: !(invalidFlag || errorFlag) }"
+          class="error-message"
         >
-      </div>
-      <button type="submit" :aria-busy="loading">
-        {{ !loading ? "Login" : "Please wait..." }}
-      </button>
-    </form>
-  </div>
+          <small>
+            {{
+              invalidFlag
+                ? "Incorrect email and password."
+                : "Unexpected error. Please try again."
+            }}</small
+          >
+        </div>
+        <button type="submit" :aria-busy="loading">
+          {{ !loading ? "Login" : "Please wait..." }}
+        </button>
+      </form>
+    </div>
+    <div></div>
+  </article>
 </template>
 
 <style scoped>
+article {
+  padding: 0;
+  overflow: hidden;
+}
+
+article > div {
+  padding: calc(var(--spacing) * 2);
+}
+
+article div:nth-of-type(2) {
+  background-color: black;
+  background-image: url("@/assets/imgs/pietro-jeng-n6B49lTx7NM-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+}
 .error-message {
   color: red;
   padding-bottom: var(--spacing);

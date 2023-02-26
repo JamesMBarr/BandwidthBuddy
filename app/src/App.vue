@@ -5,11 +5,9 @@ import "@/assets/base.css";
 </script>
 
 <template>
-  <header>
-    <NavBar />
-  </header>
+  <NavBar />
   <main class="container"><RouterView /></main>
-  <footer>Created by: James Barr</footer>
+  <footer class="container-fluid">Created by: James Barr</footer>
 </template>
 
 <style scoped lang="css">

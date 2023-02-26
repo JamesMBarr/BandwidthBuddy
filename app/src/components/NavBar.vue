@@ -21,7 +21,7 @@ async function logout() {
 </script>
 
 <template>
-  <nav>
+  <nav class="container-fluid">
     <ul>
       <li>
         <h2 class="nav-title"><strong>Speed Monitor</strong></h2>
