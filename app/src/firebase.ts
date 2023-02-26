@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore, collection } from "firebase/firestore";
+import { connectAuthEmulator, getAuth } from "firebase/auth";
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+  collection,
+} from "firebase/firestore";
 
 export const firebaseApp = initializeApp({
   apiKey: "AIzaSyDClxlWoMr5cZMs9cmVWJ2tMYS35AIGzFg",
@@ -15,3 +19,8 @@ export const auth = getAuth();
 
 export const db = getFirestore(firebaseApp);
 export const measurementsRef = collection(db, "measurements");
+
+if (process.env.NODE_ENV === "development") {
+  connectAuthEmulator(auth, "http://localhost:9099");
+  connectFirestoreEmulator(db, "localhost", 8080);
+}
