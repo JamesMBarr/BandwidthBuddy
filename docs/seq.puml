@@ -1,0 +1,40 @@
+@startuml
+
+entity Device
+actor User
+participant App
+box "Firebase"
+collections "Cloud Tasks" as Tasks
+database "Cloud Storage" as Storage
+database "Firestore" as Store
+participant "Firebase Auth" as Auth
+end box
+control "External Speed Test" as Test
+
+==Collection==
+note over Device: Runs device/mains.ts
+Device -> Test: Executes speed test
+Test --> Device: Returns speed measurement
+Device -> Tasks: Sends speed measurement\nPOST /storemeasurement/ [HTTPS]
+note over Tasks: Verifies auth token and requesting user
+note over Tasks: Appends user data to raw measurement
+Tasks -> Storage: Stores EnrichedMeasurement as a blob
+Tasks --> Device: Returns 202 Accepted [HTTPS]
+
+==Ingestion==
+note over Tasks: New blob object finalized triggers\n /ingestmeasurement/
+Tasks -> Storage: Requests new blob object
+Storage --> Tasks: Returns blob object contents
+note over Tasks: Converts EnrichedMeasurement into ProcessedMeasurement
+Tasks -> Store: Adds ProcessedMeasurement to\n"measurements" collection
+
+==Visualisation==
+User -> App: Logins
+App -> Auth: Delgates login to
+Auth --> App: Returns user
+App --> User: Redirects user to login page
+App -> Store: Subscribes to "measurements" collection
+Store --> App: Returns user's measurements
+App -> User: Displays measurement data
+
+@enduml
