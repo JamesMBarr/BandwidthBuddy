@@ -5,7 +5,7 @@ import { getStorage } from "firebase-admin/storage";
 import { UserRecord } from "firebase-functions/v1/auth";
 
 import firebaseConfig from "../../firebaseConfig.json";
-import { EnrichedMeasurement, RawMeasurement } from "../../shared/types";
+import { EnrichedMeasurement, RawMeasurement } from "@shared/types";
 
 export const app = initializeApp(firebaseConfig);
 

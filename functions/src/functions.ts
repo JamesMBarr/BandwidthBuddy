@@ -5,12 +5,9 @@ import { onRequest } from "firebase-functions/v2/https";
 import { onObjectFinalized } from "firebase-functions/v2/storage";
 import { LoginTicket, OAuth2Client } from "google-auth-library";
 
-import { auth, bucket, store, uploadToBucket } from "./main";
-import { checkEnvVar } from "../../shared/env";
-import {
-  isEnrichedMeasurement,
-  ProcessedMeasurement,
-} from "../../shared/types";
+import { auth, bucket, store, uploadToBucket } from "@/main";
+import { checkEnvVar } from "@shared/env";
+import { isEnrichedMeasurement, ProcessedMeasurement } from "@shared/types";
 
 exports.storemeasurement = onRequest(
   {

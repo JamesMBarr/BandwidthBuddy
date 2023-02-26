@@ -1,7 +1,6 @@
 import { OAuth2Client } from "google-auth-library";
-
 import { existsSync, writeFileSync, readFileSync } from "node:fs";
-import { backoff, fetchWrapper } from "../shared/utils";
+import { backoff, fetchWrapper } from "@shared/utils";
 
 const GOOGLE_AUTH_ROUTE = "https://oauth2.googleapis.com/";
 

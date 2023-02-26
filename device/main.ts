@@ -2,9 +2,10 @@
 
 import { execFile } from "node:child_process";
 import { promisify } from "util";
-import { checkEnvVar, checkEnvVarFile } from "../shared/env";
-import { fetchWrapper } from "../shared/utils";
-import { AuthClient } from "./AuthClient";
+
+import { checkEnvVar, checkEnvVarFile } from "@shared/env";
+import { fetchWrapper } from "@shared/utils";
+import { AuthClient } from "@/AuthClient";
 
 const execFileAsync = promisify(execFile);
 
