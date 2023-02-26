@@ -4,7 +4,7 @@
   "description": "",
   "author": "James Barr",
   "private": true,
-  "main": "lib/functions/src/main.js",
+  "main": "lib/functions/src/functions.js",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",

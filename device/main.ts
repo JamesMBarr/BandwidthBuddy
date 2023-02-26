@@ -38,7 +38,7 @@ const main = async () => {
 
   console.log("Posting data to endpoint");
 
-  // refreshes the credentials is required
+  // refreshes the credentials if required
   await client.getAccessToken();
 
   const resp = await fetchWrapper(URL, {

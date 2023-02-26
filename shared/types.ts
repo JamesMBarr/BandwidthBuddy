@@ -54,6 +54,7 @@ const isEnrichedMeasurement = (obj: any): obj is EnrichedMeasurement => {
 export {
   isRawMeasurement,
   isEnrichedMeasurement,
+  RawMeasurement,
   EnrichedMeasurement,
   ProcessedMeasurement,
 };
