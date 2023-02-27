@@ -63,7 +63,7 @@ onMounted(async () => {
     <div>
       <hgroup>
         <h1>Sign in</h1>
-        <h2>A simplest internet speed dashboard</h2>
+        <h2>A simplistic internet speed dashboard</h2>
       </hgroup>
       <form @submit.prevent="login">
         <label for="email"
@@ -107,7 +107,7 @@ article > div {
 
 article div:nth-of-type(2) {
   background-color: black;
-  background-image: url("@/assets/imgs/pietro-jeng-n6B49lTx7NM-unsplash.jpg");
+  background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
   background-position: center;
   background-size: cover;
 }
