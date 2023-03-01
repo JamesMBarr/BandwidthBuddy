@@ -25,7 +25,7 @@ async function logout() {
   <nav class="container-fluid">
     <ul>
       <li>
-        <Logo class="nav-logo" />
+        <Logo class="logo" />
       </li>
     </ul>
     <ul>
@@ -37,7 +37,9 @@ async function logout() {
 </template>
 
 <style lang="scss" scoped>
-.nav-logo {
-  width: 16rem;
+nav {
+  .logo {
+    height: var(--nav-element-height);
+  }
 }
 </style>

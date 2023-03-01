@@ -109,6 +109,10 @@ article {
     background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
     background-position: center;
     background-size: cover;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
 }
 
