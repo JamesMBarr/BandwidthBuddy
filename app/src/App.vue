@@ -11,8 +11,5 @@ import "@/assets/base.css";
 </template>
 
 <style scoped lang="css">
-.nav-title {
-  padding: 0px;
-  margin: 0px;
-}
+@import url(https://fonts.googleapis.com/css?family=Poppins);
 </style>

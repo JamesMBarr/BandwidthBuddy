@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { signOut } from "firebase/auth";
-import router from "@/router";
 import { ref } from "vue";
-import { auth } from "@/firebase";
 import { useCurrentUser } from "vuefire";
+import router from "@/router";
+import { auth } from "@/firebase";
+import Logo from "@/components/Logo.vue";
 
 const loading = ref(false);
 const user = useCurrentUser();
@@ -24,7 +25,7 @@ async function logout() {
   <nav class="container-fluid">
     <ul>
       <li>
-        <h2 class="nav-title"><strong>Speed Monitor</strong></h2>
+        <Logo class="nav-logo" />
       </li>
     </ul>
     <ul>
@@ -36,7 +37,8 @@ async function logout() {
 </template>
 
 <style scoped lang="css">
-.nav-title {
+.nav-logo {
+  width: 16rem;
   padding: 0px;
   margin: 0px;
 }
