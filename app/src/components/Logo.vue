@@ -6,8 +6,8 @@
     viewBox="0 0 135 30"
   >
     <g transform="translate(30, 18)">
-      <text x="0" y="0" class="primary">Bandwidth</text>
-      <text x="63.5" y="0.2" class="secondary">Buddy</text>
+      <text x="0" y="0.2" class="secondary">Bandwidth</text>
+      <text x="64" y="0" class="primary">Buddy</text>
     </g>
     <ellipse
       class="primary-fill primary-stroke"
@@ -45,7 +45,7 @@
   </svg>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .primary-fill {
   fill: var(--primary);
 }
@@ -57,13 +57,14 @@
 text {
   font-family: Poppins;
   font-size: 12px;
-}
 
-text.primary {
-  color: var(--primary);
-  font-weight: bold;
-}
-text.secondary {
-  color: var(--h1-color);
+  &.primary {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  &.secondary {
+    color: var(--h1-color);
+  }
 }
 </style>

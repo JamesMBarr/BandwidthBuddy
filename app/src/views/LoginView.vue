@@ -95,21 +95,21 @@ onMounted(async () => {
   </article>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 article {
   padding: 0;
   overflow: hidden;
-}
 
-article > div {
-  padding: calc(var(--spacing) * 2);
-}
+  div {
+    padding: calc(var(--spacing) * 2);
+  }
 
-article div:nth-of-type(2) {
-  background-color: black;
-  background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
-  background-position: center;
-  background-size: cover;
+  div:nth-of-type(2) {
+    background-color: black;
+    background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+  }
 }
 
 .error-message {

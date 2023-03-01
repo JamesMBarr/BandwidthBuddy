@@ -36,10 +36,8 @@ async function logout() {
   </nav>
 </template>
 
-<style scoped lang="css">
+<style lang="scss" scoped>
 .nav-logo {
   width: 16rem;
-  padding: 0px;
-  margin: 0px;
 }
 </style>
