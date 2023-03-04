@@ -18,6 +18,10 @@ import "@/assets/base.css";
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 
 :root {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
   --nav-element-height: 4rem;
   --footer-height: 2rem;
 }
