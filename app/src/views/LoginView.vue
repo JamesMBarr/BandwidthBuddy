@@ -105,13 +105,14 @@ article {
   }
 
   div:nth-of-type(2) {
-    background-color: black;
-    background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
-    background-position: center;
-    background-size: cover;
+    display: none;
 
-    @media (max-width: 992px) {
-      display: none;
+    @media (min-width: 992px) {
+      display: block;
+      background-color: black;
+      background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
+      background-position: center;
+      background-size: cover;
     }
   }
 }
