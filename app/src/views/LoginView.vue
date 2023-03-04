@@ -91,6 +91,7 @@ onMounted(async () => {
         </button>
       </form>
     </div>
+    <!-- Splash image -->
     <div></div>
   </article>
 </template>
@@ -100,11 +101,11 @@ article {
   padding: 0;
   overflow: hidden;
 
-  div {
+  > div {
     padding: calc(var(--spacing) * 2);
   }
 
-  div:nth-of-type(2) {
+  > div:nth-of-type(2) {
     display: none;
 
     @media (min-width: 992px) {
@@ -118,8 +119,10 @@ article {
 }
 
 .error-message {
-  color: red;
-  padding-bottom: var(--spacing);
+  color: #e60000;
+  background-color: #ffe6e6;
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing) * 0.5);
   margin-bottom: calc(var(--spacing) * 0.25);
 }
 </style>
