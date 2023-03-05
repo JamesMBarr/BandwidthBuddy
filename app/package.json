@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "firebase": "^9.16.0",
+    "lucide-vue-next": "^0.122.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
     "vuefire": "^3.0.1"
