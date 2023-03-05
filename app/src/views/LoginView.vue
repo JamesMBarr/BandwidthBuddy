@@ -97,6 +97,8 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
+@use "../assets/variables";
+
 article {
   padding: 0;
   overflow: hidden;
@@ -108,7 +110,7 @@ article {
   > div:nth-of-type(2) {
     display: none;
 
-    @media (min-width: 992px) {
+    @media (min-width: variables.$large-bp) {
       display: block;
       background-color: black;
       background-image: url("@/assets/imgs/nasa-Q1p7bh3SHj8-unsplash.jpg");
