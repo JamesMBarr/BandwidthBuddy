@@ -4,7 +4,7 @@ import { ref } from "vue";
 import { useCurrentUser } from "vuefire";
 import router from "@/router";
 import { auth } from "@/firebase";
-import Logo from "@/components/Logo.vue";
+import LogoWithName from "@/components/LogoWithName.vue";
 
 const loading = ref(false);
 const user = useCurrentUser();
@@ -25,7 +25,7 @@ async function logout() {
   <nav class="container-fluid">
     <ul>
       <li>
-        <Logo class="logo" />
+        <LogoWithName />
       </li>
     </ul>
     <ul>
