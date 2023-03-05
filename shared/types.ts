@@ -29,7 +29,9 @@ interface EnrichedMeasurement extends RawMeasurement {
 
 interface ProcessedMeasurement {
   user: MetadataUser;
+  /** Download speed in bits per second (bps)*/
   download: number;
+  /** Upload speed in bits per second (bps)*/
   upload: number;
   latency: number;
   rawFileId: string;
