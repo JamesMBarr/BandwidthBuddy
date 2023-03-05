@@ -15,11 +15,7 @@ const user = useCurrentUser();
       {{ user?.displayName }}
     </div>
     <div class="user-icon">
-      <img
-        v-if="!user?.photoURL"
-        :src="user?.photoURL!"
-        alt="User icon image"
-      />
+      <img v-if="user?.photoURL" :src="user?.photoURL!" alt="User icon image" />
       <User v-else :class="{ inverse: props.inverseIcon }" />
     </div>
   </div>
