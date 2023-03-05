@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   TimeScale,
+type ChartOptions,
 } from "chart.js";
 import "chartjs-adapter-luxon";
 import { Line } from "vue-chartjs";
@@ -33,6 +34,7 @@ const props = defineProps({
   },
 });
 
+// TODO: fix update the chart bug
 const datasets = computed(() => {
   const datasets = {
     download: {
@@ -72,11 +74,13 @@ const datasets = computed(() => {
     });
   });
 
+  // TODO: fix this!
   // @ts-ignore
   return Object.keys(datasets).map((k) => datasets[k]);
 });
 
-const chartOptions = {
+// TODO: typing
+const chartOptions: any = {
   responsive: true,
   scales: {
     xAxis: {
