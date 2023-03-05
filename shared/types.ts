@@ -1,4 +1,4 @@
-import { Timestamp } from "@google-cloud/firestore";
+import type { Timestamp } from "@google-cloud/firestore";
 
 interface MetadataUser {
   id: string;
@@ -56,7 +56,10 @@ const isEnrichedMeasurement = (obj: any): obj is EnrichedMeasurement => {
 export {
   isRawMeasurement,
   isEnrichedMeasurement,
+};
+
+export type {
   RawMeasurement,
   EnrichedMeasurement,
   ProcessedMeasurement,
-};
+}
