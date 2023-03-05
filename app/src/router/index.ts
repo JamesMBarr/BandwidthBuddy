@@ -4,7 +4,6 @@ import {
   type NavigationGuardWithThis,
 } from "vue-router";
 import { getCurrentUser } from "vuefire";
-import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 
 const router = createRouter({
@@ -13,7 +12,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: () => import("../views/HomeView.vue"),
       meta: {
         requiresAuth: true,
       },
