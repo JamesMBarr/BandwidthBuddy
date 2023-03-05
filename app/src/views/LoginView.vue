@@ -124,5 +124,9 @@ article {
   border-radius: var(--border-radius);
   padding: calc(var(--spacing) * 0.5);
   margin-bottom: calc(var(--spacing) * 0.25);
+
+  &.invisible {
+    visibility: hidden;
+  }
 }
 </style>
