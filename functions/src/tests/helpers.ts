@@ -33,9 +33,9 @@ export const addUsers = async () => {
   console.log(`Failed import count: ${importResult.failureCount}`);
 };
 
-function generateRandomNumber(min: number, max: number) {
+const generateRandomNumber = (min: number, max: number) => {
   return Math.random() * (max - min) + min;
-}
+};
 
 const mockBandwidth = () => generateRandomNumber(1e6, 1e8);
 
@@ -56,11 +56,12 @@ const mockRawMeasurement = (): RawMeasurement => {
   };
 };
 
-export const mockUpload = async (email: string = "user1@example.com") => {
+export const mockUpload = async (email = "user1@example.com") => {
   const user = users.find((u) => u.email == email);
 
   if (!user) throw new Error(`No user found with email: ${email}`);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await uploadToBucket(user as any, mockRawMeasurement());
 };
 

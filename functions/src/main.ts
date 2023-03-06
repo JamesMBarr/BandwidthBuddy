@@ -21,6 +21,7 @@ export const uploadToBucket = (
 
   const enrichedMeasurement: EnrichedMeasurement = {
     ...rawMeasurement,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     __metadata: { user: { id: user.uid, email: user.email! } },
   };
 

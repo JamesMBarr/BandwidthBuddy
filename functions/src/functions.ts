@@ -20,13 +20,13 @@ exports.storemeasurement = onRequest(
   async (req, res) => {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    if (authHeader === undefined || !authHeader.startsWith("Bearer ")) {
       res.status(403).send("Unauthorized");
       return;
     }
 
     logger.debug("Found authZ header");
-    const tokenId = authHeader!.split("Bearer ")[1];
+    const tokenId = authHeader.split("Bearer ")[1];
 
     const CLIENT_ID = checkEnvVar("CLIENT_ID");
     const client = new OAuth2Client(CLIENT_ID);
@@ -43,9 +43,9 @@ exports.storemeasurement = onRequest(
       return;
     }
 
-    const payload = ticket.getPayload()!;
+    const payload = ticket.getPayload();
 
-    if (!payload.email) {
+    if (!payload?.email) {
       logger.log("No email provided in payload");
       res.status(403).send("Unauthorized");
       return;
