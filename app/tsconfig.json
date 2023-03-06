@@ -8,7 +8,6 @@
       "@shared/*": ["../../shared/*"]
     }
   },
-
   "references": [
     {
       "path": "./tsconfig.config.json"
