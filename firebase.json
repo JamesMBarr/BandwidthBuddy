@@ -40,5 +40,13 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "hosting": {
+    "public": "app/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
