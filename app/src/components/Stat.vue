@@ -21,8 +21,6 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .stat {
-  width: 8rem;
-
   > .value {
     font-size: 2rem;
 
