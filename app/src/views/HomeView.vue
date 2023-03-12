@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { onSnapshot, orderBy, query, where } from "firebase/firestore";
+import {
+  FirestoreError,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { onUnmounted, ref, computed } from "vue";
 import { useCurrentUser } from "vuefire";
 import { ArrowDown, ArrowUp, Timer } from "lucide-vue-next";
@@ -11,6 +17,7 @@ import type { ProcessedMeasurement } from "@shared/types";
 
 const rawMeasurements = ref<ProcessedMeasurement[]>([]);
 const loading = ref(true);
+const error = ref<FirestoreError | null>(null);
 
 const user = useCurrentUser();
 const today = () => new Date().setHours(0, 0, 0, 0);
@@ -26,9 +33,15 @@ const mostRecentQ = query(
 
 const unsubscribe = onSnapshot(mostRecentQ, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
+    rawMeasurements.value = [];
     rawMeasurements.value.push(doc.data() as ProcessedMeasurement);
     loading.value = false;
   });
+  (e: FirestoreError) => {
+    console.error(e);
+    error.value = e;
+    loading.value = false;
+  };
 });
 
 const convertbpsToMbps = (speed: number) => speed / 1e6;
@@ -58,6 +71,9 @@ onUnmounted(() => {
     <div v-if="loading" class="placeholder-container">
       <h3>Loading...</h3>
       <progress></progress>
+    </div>
+    <div v-else-if="error" class="placeholder-container">
+      <h2>😱 Oh no! An error has occurred</h2>
     </div>
     <div v-else-if="measurements.length === 0" class="placeholder-container">
       <h2>🤔 Hmm...</h2>
