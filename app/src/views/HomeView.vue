@@ -32,8 +32,9 @@ const mostRecentQ = query(
 );
 
 const unsubscribe = onSnapshot(mostRecentQ, (querySnapshot) => {
+  rawMeasurements.value = [];
+
   querySnapshot.forEach((doc) => {
-    rawMeasurements.value = [];
     rawMeasurements.value.push(doc.data() as ProcessedMeasurement);
     loading.value = false;
   });
