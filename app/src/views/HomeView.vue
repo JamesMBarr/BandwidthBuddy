@@ -31,15 +31,15 @@ const unsubscribe = onSnapshot(mostRecentQ, (querySnapshot) => {
   });
 });
 
-const convertbpsToMBps = (speed: number) => speed / (8 * 1e6);
+const convertbpsToMbps = (speed: number) => speed / 1e6;
 const round = (number: number, scale: number) =>
   Math.round(number / scale) * scale;
 
 const measurements = computed(() => {
   return rawMeasurements.value.map((m) => ({
     ...m,
-    download: round(convertbpsToMBps(m.download), 0.01),
-    upload: round(convertbpsToMBps(m.upload), 0.01),
+    download: round(convertbpsToMbps(m.download), 0.01),
+    upload: round(convertbpsToMbps(m.upload), 0.01),
     latency: round(m.latency, 1),
   }));
 });
@@ -74,7 +74,7 @@ onUnmounted(() => {
           id="download"
           :value="mostRecentMeasurement.download.toFixed(2)"
           label="Download"
-          unit="MBps"
+          unit="Mbps"
         >
           <template v-slot:icon
             ><ArrowDown
@@ -86,7 +86,7 @@ onUnmounted(() => {
           id="upload"
           :value="mostRecentMeasurement.upload.toFixed(2)"
           label="Upload"
-          unit="MBps"
+          unit="Mbps"
         >
           <template v-slot:icon
             ><ArrowUp class="icon border" :style="{ color: 'rgb(75,192,192)' }"
