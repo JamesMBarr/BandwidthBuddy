@@ -65,9 +65,16 @@ nav {
 
   ul:nth-child(2) {
     display: none;
+    flex-shrink: 1;
+    min-width: 0px;
 
     @media (min-width: variables.$small-bp) {
       display: flex;
+    }
+
+    > :first-child {
+      flex-shrink: 1;
+      min-width: 0px;
     }
   }
 

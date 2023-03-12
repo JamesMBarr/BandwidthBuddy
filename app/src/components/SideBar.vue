@@ -25,7 +25,7 @@ const user = useCurrentUser();
 <style lang="scss" scoped>
 @use "../assets/variables";
 
-$sidebar-width: 14rem;
+$sidebar-width: 18rem;
 
 .sidebar {
   position: fixed;

@@ -11,8 +11,8 @@ const user = useCurrentUser();
 </script>
 <template>
   <div class="user-tag" :class="{ vertical: verticalAlign }">
-    <div v-if="user?.displayName" class="display-name">
-      {{ user?.displayName }}
+    <div class="display-name">
+      {{ user?.displayName || user?.email }}
     </div>
     <div class="user-icon">
       <img v-if="user?.photoURL" :src="user?.photoURL!" alt="User icon image" />
@@ -29,9 +29,19 @@ const user = useCurrentUser();
 
   &.vertical {
     flex-direction: column-reverse;
+
+    .display-name {
+      text-align: center;
+      padding: 0px;
+    }
   }
 
   > .display-name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     text-align: end;
     padding-right: calc(0.25rem);
   }
