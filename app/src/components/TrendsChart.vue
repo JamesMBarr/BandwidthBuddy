@@ -10,7 +10,6 @@ import {
   Tooltip,
   Legend,
   TimeScale,
-type ChartOptions,
 } from "chart.js";
 import "chartjs-adapter-luxon";
 import { Line } from "vue-chartjs";

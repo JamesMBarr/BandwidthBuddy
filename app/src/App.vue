@@ -25,6 +25,10 @@ import NavBar from "@/components/NavBar.vue";
   --footer-height: 2rem;
 }
 
+article {
+  padding: calc(var(--spacing) * 2);
+}
+
 body > main {
   padding-top: var(--spacing);
   padding-bottom: var(--spacing);
